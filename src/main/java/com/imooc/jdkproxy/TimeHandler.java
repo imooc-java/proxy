@@ -19,7 +19,11 @@ public class TimeHandler implements InvocationHandler {
         long start = System.currentTimeMillis();
         System.out.println("Car start move...");
 
-        method.invoke(target);
+        if (target instanceof InvocationHandler) {
+            method.invoke(target, args);
+        } else {
+            method.invoke(target);
+        }
 
         long end = System.currentTimeMillis();
         System.out.println("Car moved time: " + (end - start) + " millisecond");
