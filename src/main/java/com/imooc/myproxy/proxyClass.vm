@@ -4,14 +4,20 @@ public class $Proxy0 implements $interface {
 
     private $interface infce;
 
-    public Proxy0($interface infce) {
+    public $Proxy0($interface infce) {
         this.infce = infce;
     }
 
 #foreach($method in $methods)
     @Override
     public void $method.getName()() {
+        long start = System.currentTimeMillis();
+        System.out.println("Car start move...");
+
         infce.$method.getName()();
+
+        long end = System.currentTimeMillis();
+        System.out.println("Car moved time: " + (end - start) + " millisecond");
     }
 #end
 }
