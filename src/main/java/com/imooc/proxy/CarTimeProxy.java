@@ -14,6 +14,7 @@ public class CarTimeProxy implements Moveable {
     @Override
     public void move() {
         long start = System.currentTimeMillis();
+        System.out.println("Car start move...");
 
         moveable.move();
 
