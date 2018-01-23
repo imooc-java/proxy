@@ -1,0 +1,17 @@
+package com.imooc.myproxy;
+
+public class $Proxy0 implements $interface {
+
+    private $interface infce;
+
+    public Proxy0($interface infce) {
+        this.infce = infce;
+    }
+
+#foreach($method in $methods)
+    @Override
+    public void $method.getName()() {
+        infce.$method.getName()();
+    }
+#end
+}
