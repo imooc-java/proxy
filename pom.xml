@@ -24,12 +24,21 @@
     </properties>
 
     <dependencies>
+        <!--<version>${dependency.version}</version>-->
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>${dependency.version}</version>
+            <version>4.12</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib-nodep</artifactId>
+            <version>3.2.6</version>
+        </dependency>
+
     </dependencies>
 
     <build>
