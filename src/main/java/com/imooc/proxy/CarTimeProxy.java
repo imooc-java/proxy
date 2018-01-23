@@ -3,19 +3,19 @@ package com.imooc.proxy;
 /**
  * 通过聚合方式实现代理，完成开车时间记录
  */
-public class Car3 implements Moveable {
+public class CarTimeProxy implements Moveable {
 
-    private Car car;
+    private Moveable moveable;
 
-    public Car3(Car car) {
-        this.car = car;
+    public CarTimeProxy(Moveable moveable) {
+        this.moveable = moveable;
     }
 
     @Override
     public void move() {
         long start = System.currentTimeMillis();
 
-        car.move();
+        moveable.move();
 
         long end = System.currentTimeMillis();
         System.out.println("Car moved time: " + (end - start) + " millisecond");
