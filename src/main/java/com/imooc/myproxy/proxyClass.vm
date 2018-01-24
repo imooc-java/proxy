@@ -1,23 +1,26 @@
 package com.imooc.myproxy;
 
+import com.imooc.myproxy.InvocationHandler;
+
+import java.lang.reflect.Method;
+
 public class $Proxy0 implements $interface {
 
-    private $interface infce;
+    private InvocationHandler invocationHandler;
 
-    public $Proxy0($interface infce) {
-        this.infce = infce;
+    public $Proxy0(InvocationHandler invocationHandler) {
+        this.invocationHandler = invocationHandler;
     }
 
 #foreach($method in $methods)
     @Override
-    public void $method.getName()() {
-        long start = System.currentTimeMillis();
-        System.out.println("Car start move...");
-
-        infce.$method.getName()();
-
-        long end = System.currentTimeMillis();
-        System.out.println("Car moved time: " + (end - start) + " millisecond");
+    public void ${method.getName()}() {
+        try {
+            Method method = ${interface}.class.getMethod("${method.getName()}", new Class[0]);
+            invocationHandler.invoke(this, method);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 #end
 }

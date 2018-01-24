@@ -1,6 +1,5 @@
 package com.imooc.myproxy;
 
-import com.imooc.proxy.Car;
 import org.apache.commons.io.FileUtils;
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
@@ -14,7 +13,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.nio.charset.Charset;
 
 /**
@@ -24,7 +22,7 @@ public class Proxy {
 
     public static final String CHARSET = "UTF-8";
 
-    public static Object newProxyInstance(Class infce) throws IOException, ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+    public static Object newProxyInstance(Class infce, InvocationHandler invocationHandler) throws Exception {
         // 生产代理类内容
         String proxyClassContent = getProxyClassContent(infce);
         // 获取代理类 java 文件名
@@ -36,8 +34,8 @@ public class Proxy {
         // 加载编译好的 class 文件
         ClassLoader classLoader = ClassLoader.getSystemClassLoader();
         Class<?> proxyClass = classLoader.loadClass("com.imooc.myproxy.$Proxy0");
-        Constructor<?> constructor = proxyClass.getConstructor(infce);
-        return constructor.newInstance(new Car());
+        Constructor<?> constructor = proxyClass.getConstructor(InvocationHandler.class);
+        return constructor.newInstance(invocationHandler);
     }
 
     private static void compilerProxyFile(String proxyJavaFileName) throws IOException {
