@@ -16,3 +16,17 @@
 * 3-3 动态代理实现添加 InvocationHandler
 ### 第4章 代理模式总结 
 * 4-1 课程总结
+
+## 注意
+
+* 项目是基于 [Maven](https://maven.apache.org/ "https://maven.apache.org/") 构建的，不需要一个个添加 jar 包了
+* 所有测试都是基于 [Junit4](http://junit.org/junit4/ "http://junit.org/junit4/") 编写的，目录为`src/test/java`
+* 第3章目录在 `com.imooc.myproxy` 下
+* 生成代理类源码方式为 [Velocity](http://velocity.apache.org/engine/2.0/index.html) (基于字符串拼接方式太不友好啦😁)
+* 可以根据 Commits 或 Tags 切换到相关章节源码
+
+感谢 [David](https://www.imooc.com/u/461086 "https://www.imooc.com/u/461086") 大神奉献的视频
+
+[![David](https://ws4.sinaimg.cn/large/006tNc79ly1fnrtl22e04j305k05ka9z.jpg)](https://www.imooc.com/u/461086 "https://www.imooc.com/u/461086")
+
+** 祝大家学习愉快！**
